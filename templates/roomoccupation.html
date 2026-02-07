@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Room Occupation - Hotel Management System{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Check Room Occupation</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ url_for('roomoccupation') }}" method="post">
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Check Occupation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
