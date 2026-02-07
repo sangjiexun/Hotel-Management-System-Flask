@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Room Availability List - Hotel Management System{% endblock %}
+
+{% block content %}
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h4>Available Rooms for {{ date }} from {{ start_time }} to {{ end_time }}</h4>
+            <hr>
+            
+            {% if rooms %}
+            <div class="row">
+                {% for room in rooms %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ room.name }}</h5>
+                            <p class="card-text">Capacity: {{ room.capacity }} people</p>
+                            <p class="card-text">Equipment: {{ room.equipment }}</p>
+                            <a href="{{ url_for('book') }}" class="btn btn-primary">Book This Room</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                No rooms available at the selected time.
+            </div>
+            {% endif %}
+            
+            <a href="{{ url_for('roomavailable') }}" class="btn btn-secondary mt-4">Check Another Time</a>
+        </div>
+    </div>
+{% endblock %}
