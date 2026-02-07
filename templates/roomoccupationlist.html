@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Room Occupation List - Hotel Management System{% endblock %}
+
+{% block content %}
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h4>Room Occupation for {{ date }}</h4>
+            <hr>
+            
+            {% if meetings %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Meeting Title</th>
+                            <th>Room</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Team</th>
+                            <th>Booker</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for meeting in meetings %}
+                        <tr>
+                            <td>{{ meeting.title }}</td>
+                            <td>{{ meeting.room.name }}</td>
+                            <td>{{ meeting.start_time.strftime('%H:%M') }}</td>
+                            <td>{{ meeting.end_time.strftime('%H:%M') }}</td>
+                            <td>{{ meeting.team.name }}</td>
+                            <td>{{ meeting.booker.username }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                No meetings scheduled for this date.
+            </div>
+            {% endif %}
+            
+            <a href="{{ url_for('roomoccupation') }}" class="btn btn-secondary mt-4">Check Another Date</a>
+        </div>
+    </div>
+{% endblock %}
