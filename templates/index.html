@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Hotel Management System{% endblock %}
+
+{% block content %}
+    <div class="jumbotron mt-4">
+        <h1 class="display-4">Welcome to Hotel Management System</h1>
+        <p class="lead">A comprehensive system for managing hotel operations, including meeting room bookings, room availability checks, and cost management.</p>
+        <hr class="my-4">
+        <p>Use the navigation menu above to access various features of the system.</p>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('book') }}" role="button">Book a Meeting Room</a>
+        <a class="btn btn-secondary btn-lg ml-2" href="{{ url_for('roomavailable') }}" role="button">Check Room Availability</a>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Meeting Room Booking</h5>
+                    <p class="card-text">Book meeting rooms for your team meetings and events.</p>
+                    <a href="{{ url_for('book') }}" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Room Availability</h5>
+                    <p class="card-text">Check the availability of meeting rooms for specific dates and times.</p>
+                    <a href="{{ url_for('roomavailable') }}" class="btn btn-primary">Check Availability</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cost Management</h5>
+                    <p class="card-text">Manage and track costs associated with meetings and events.</p>
+                    <a href="{{ url_for('costs') }}" class="btn btn-primary">Manage Costs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
